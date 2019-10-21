@@ -1,0 +1,14 @@
+<form id="test-form" [formGroup]="testForm" (ngSubmit)="onSubmit()">
+  <label>
+    <input type="text" formControlName="name" placeholder="Naam">
+  </label>
+  <label>
+    <input type="number" formControlName="age" placeholder="Leeftijd">
+  </label>
+
+  <button id="submit-button" [disabled]="!testForm.valid">Verzenden</button>
+
+  <p *ngIf="yearOfBirth" [class.even-year]="isBirthYearEven()" [class.odd-year]="!isBirthYearEven()" id="year-of-birth">
+    You were born in {{yearOfBirth}}
+  </p>
+</form>

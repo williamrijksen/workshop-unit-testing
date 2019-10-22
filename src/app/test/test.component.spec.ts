@@ -50,7 +50,7 @@ describe('TestComponent', () => {
     });
 
     it( 'should return false if the year is odd', () => {
-      //TODO - Test if the isBirthYearEven method returns true when the yearOfBirth is odd
+      //TODO - Test if the isBirthYearEven method returns false when the yearOfBirth is odd
     });
 
     it('should display the "odd-year" class when the year is odd', () => {

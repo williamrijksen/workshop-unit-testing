@@ -58,10 +58,6 @@ describe('TestComponent', () => {
   });
 
   describe('The born Year', () => {
-    it('should set the yearOfBirth variable when it retrieves it from the FormService', () => {
-
-    });
-
     it('should return true if the year is even', () => {
       //TODO - Test if the isBirthYearEven method returns true when the yearOfBirth is even
       component.yearOfBirth = 2;

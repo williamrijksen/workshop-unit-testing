@@ -12,6 +12,6 @@ export class FormService {
   public submitFormDetails(age): void {
     // This method simulates a call to a backend which determines the year based on your age (PS. Its not very accurate)
     // This http call then sets a variable in the subject
-    this.subject.next(2019 - age);
+    this.subject.next(new Date().getFullYear() - age);
   }
 }

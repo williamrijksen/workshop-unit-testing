@@ -1,27 +1,33 @@
-# TestApplication
+# Unit Testing Workshop
+This project is created by Milan Steenwinkel for a workshop at Incentro Interactive and is free to be used by anyone who wishes to practice unit testing in Angular. <br>
+The code in the project is intended to give varied examples of testable code, but **not** production worthy feature-code. 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.12.
+Before running the project, make sure to run ```npm install```<br>
+Run the project with ```ng Serve```, run tests with ```ng test```
 
-## Development server
+If you get stuck, ask a colleague, me (Milan) or check the Angular docs (https://angular.io/guide/testing) for hints.
+# Now for the fun part
+### Exercise 1, Component Testing
+Components take up a big part of angular applications and usually contain the most diverse logic.
+To start, open the **_components/age-test_** component.ts and .spec files and follow the steps.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+In this file you will learn:
 
-## Code scaffolding
+* Testing invalid/valid states of a form.
+* Mocking and validating a call to a service.
+* Testing dynamic CSS of a component.
+* Testing a basic calculation method.
+* Testing a subscription to a **subject** in another file/service.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+### Exercise 2, Testing a (HTTP) service
+Services are often (but not exclusively) used as a gateway between components and a backend system. <br>
+For this exercise, the service is responsible for calling upon an API to do various things with a list of persons.<br>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+The model for a person is found in ```models/person.ts``` <br>
+To start, open the file ```services/person.service.ts``` and ```services/person.service.spec.ts``` <br>
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+In this file you will learn:
+* To mock HTTP Calls
+* To test HTTP errors
+* To test data that is modified and/or filtered by RXJS operators

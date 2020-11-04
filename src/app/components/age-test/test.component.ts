@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {FormService} from '../form.service';
+import {FormService} from '../../services/form.service';
 
 @Component({
   selector: 'app-test',
@@ -26,17 +26,17 @@ export class TestComponent implements OnInit {
   }
 
   onSubmit() {
-    this.formService.submitFormDetails(this.testForm.value['age'])
+    this.formService.submitFormDetails(this.testForm.value.age);
   }
 
   private createForm() {
     this.testForm = new FormGroup({
-      'name': new FormControl(this.formResult.name, [Validators.required, Validators.minLength(2)]),
-      'age': new FormControl(this.formResult.age, [Validators.required, Validators.min(1)])
+      name: new FormControl(this.formResult.name, [Validators.required, Validators.minLength(2)]),
+      age: new FormControl(this.formResult.age, [Validators.required, Validators.min(1)])
     });
   }
 
   public isBirthYearEven(): boolean {
-    return this.yearOfBirth % 2 == 0;
+    return this.yearOfBirth % 2 === 0;
   }
 }

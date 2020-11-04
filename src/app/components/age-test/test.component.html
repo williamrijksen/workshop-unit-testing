@@ -1,13 +1,16 @@
 <form id="test-form" [formGroup]="testForm" (ngSubmit)="onSubmit()">
   <label>
+    <label>Naam</label>
     <input type="text" formControlName="name" placeholder="Naam">
   </label>
   <label>
+    <label>Leeftijd</label>
     <input type="number" formControlName="age" placeholder="Leeftijd">
   </label>
 
-  <button id="submit-button" [disabled]="!testForm.valid">Verzenden</button>
+  <button id="submit-button" [disabled]="!testForm.valid">Send</button>
 
+  <p>The result will display red for odd years, green for even years</p>
   <p *ngIf="yearOfBirth" [class.even-year]="isBirthYearEven()" [class.odd-year]="!isBirthYearEven()" id="year-of-birth">
     You were born in {{yearOfBirth}}
   </p>

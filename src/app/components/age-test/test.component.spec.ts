@@ -2,12 +2,14 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {TestComponent} from './test.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {FormService} from '../../services/form.service';
+import {FormService} from '../../services/form/form.service';
 import {By} from '@angular/platform-browser';
 import Spy = jasmine.Spy;
+import {DebugElement} from '@angular/core';
 
 describe('TestComponent', () => {
   let component: TestComponent;
+  let debugInstance: DebugElement;
   let fixture: ComponentFixture<TestComponent>;
   let formService: FormService;
   let submitFormDetailsSpy: Spy;
@@ -31,7 +33,13 @@ describe('TestComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TestComponent);
     formService = TestBed.get(FormService);
+    // This is the instance of the component. This can be used to execute methods and control the component.
     component = fixture.componentInstance;
+
+    // This is the debugElement, it can be used to control the actual rendered component.
+    debugInstance = fixture.debugElement;
+
+    // This method triggers a change detection cycle in the component.
     fixture.detectChanges();
   });
 

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {FormService} from '../../services/form.service';
+import {FormService} from '../../services/form/form.service';
 
 @Component({
   selector: 'app-test',

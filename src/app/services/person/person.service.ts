@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
-import {Person} from '../models/person';
-import {catchError, filter, map, retry} from 'rxjs/operators';
+import {Person} from '../../models/person';
+import {catchError, map, retry} from 'rxjs/operators';
+import {LoggingService} from '../logging/logging.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class PersonService {
 
   public apiUrl = 'https://5fa15fc22541640016b6af23.mockapi.io/';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private loggingService: LoggingService) {
   }
 
   /*
@@ -34,7 +35,7 @@ export class PersonService {
         map((persons: Person[]) => persons.filter(person => person.isValidated)));
   }
 
-  private handleError(error) {
+  private handleError(error): Observable<never> {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // client-side error
@@ -43,7 +44,7 @@ export class PersonService {
       // server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    console.error(errorMessage);
+    this.loggingService.logError(errorMessage);
     return throwError(errorMessage);
   }
 }

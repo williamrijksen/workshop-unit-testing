@@ -1,11 +1,13 @@
 # Unit Testing Workshop
-This project is created by Milan Steenwinkel for a workshop at Incentro Interactive and is free to be used by anyone who wishes to practice unit testing in Angular. <br>
-The code in the project is intended to give varied examples of testable code, but **not** production worthy feature-code. 
+**Author: Milan Steenwinkel**<br><br>
+This project is created for training purposes and is free to be
+used by anyone who wishes to practice unit testing in Angular. <br>
+The code in the project is intended to give varied examples of testable code, 
+but **not** production worthy feature-code. 
 
 Before running the project, make sure to run ```npm install```<br>
 Run the project with ```ng Serve```, run tests with ```ng test```
 
-If you get stuck, ask a colleague, me (Milan) or check the Angular docs (https://angular.io/guide/testing) for hints.
 # Now for the fun part
 ### Exercise 1, Component Testing
 Components take up a big part of angular applications and usually contain the most diverse logic.

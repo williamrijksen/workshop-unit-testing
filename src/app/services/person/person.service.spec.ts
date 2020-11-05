@@ -51,9 +51,9 @@ describe('PersonService', () => {
   }));
 
   beforeEach(() => {
-    loggingService = TestBed.get(LoggingService);
-    service = TestBed.get(PersonService); // Assign a 'testing instance' of the service to a variable.
-    httpMock = TestBed.get(HttpTestingController); // Assign our HTTP Mock variable to be a HttpTestingController.
+    loggingService = TestBed.inject(LoggingService);
+    service = TestBed.inject(PersonService); // Assign a 'testing instance' of the service to a variable.
+    httpMock = TestBed.inject(HttpTestingController); // Assign our HTTP Mock variable to be a HttpTestingController.
   });
 
   afterEach(() => {

@@ -32,7 +32,7 @@ describe('TestComponent', () => {
    */
   beforeEach(() => {
     fixture = TestBed.createComponent(TestComponent);
-    formService = TestBed.get(FormService);
+    formService = TestBed.inject(FormService);
     // This is the instance of the component. This can be used to execute methods and control the component.
     component = fixture.componentInstance;
 

@@ -53,17 +53,29 @@ describe('TestComponent', () => {
      */
     it('should be invalid', () => {
       // TODO - Test the form to be invalid if inputs are empty
+      // For form Validity, you want to test normal cases and edge cases, such as the limits of the validation.
       component.testForm.controls.name.setValue('');
       component.testForm.controls.age.setValue(-1);
       expect(component.testForm.valid).toBeFalsy();
 
-      // TODO - Test the form to be invalid if only one input is empty while the other is filled in
+      component.testForm.controls.name.setValue('Theo Test');
+      component.testForm.controls.age.setValue(111);
+      expect(component.testForm.valid).toBeFalsy();
+
+      component.testForm.controls.age.setValue(0);
+      expect(component.testForm.valid).toBeFalsy();
     });
 
     it('should be valid', () => {
       // TODO - Test the form to be valid if all inputs are filled in correctly
       component.testForm.controls.name.setValue('Milan');
       component.testForm.controls.age.setValue(15);
+      expect(component.testForm.valid).toBeTruthy();
+
+      component.testForm.controls.age.setValue(1);
+      expect(component.testForm.valid).toBeTruthy();
+
+      component.testForm.controls.age.setValue(110);
       expect(component.testForm.valid).toBeTruthy();
     });
 
@@ -82,12 +94,6 @@ describe('TestComponent', () => {
   });
 
   describe('The born Year', () => {
-    it('should set the yearOfBirth variable when it retrieves it from the FormService', () => {
-      // TODO - Test that the yearOfBirth variable is set when the formService emits a new value.
-      formService.subject.next(2020);
-      expect(component.yearOfBirth).toEqual(2020);
-    });
-
     it('should return true if the year is even', () => {
       // TODO - Test if the isBirthYearEven method returns true when the yearOfBirth is even
       component.yearOfBirth = 2;

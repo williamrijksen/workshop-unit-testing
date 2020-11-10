@@ -1,8 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 
 import {PersonService} from './person.service';
-import {TestComponent} from '../../components/age-test/test.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {Person} from '../../models/person';
 import {LoggingService} from '../logging/logging.service';
@@ -75,7 +73,7 @@ describe('PersonService', () => {
     service.getPersons().subscribe(() => {
     });
 
-    const request = httpMock.expectOne(service.apiUrl + 'persons');
+    httpMock.expectOne(service.apiUrl + 'persons');
   });
 
   it('should retry once after a first failed attempt', () => {

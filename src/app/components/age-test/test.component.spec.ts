@@ -83,7 +83,9 @@ describe('TestComponent', () => {
 
   describe('The born Year', () => {
     it('should set the yearOfBirth variable when it retrieves it from the FormService', () => {
-
+      // TODO - Test that the yearOfBirth variable is set when the formService emits a new value.
+      formService.subject.next(2020);
+      expect(component.yearOfBirth).toEqual(2020);
     });
 
     it('should return true if the year is even', () => {

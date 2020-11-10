@@ -1,0 +1,26 @@
+<h2>Person input component</h2>
+<mat-slide-toggle (change)="toggleFormVisibility($event)" color="primary">Show input form</mat-slide-toggle>
+<form id="add-person-form" [formGroup]="addPersonForm" (ngSubmit)="onSubmit()" *ngIf="formVisible">
+  <mat-label>Name</mat-label>
+  <input matInput type="text" formControlName="name" placeholder="Naam">
+
+  <br>
+
+  <mat-label>Date of Birth</mat-label>
+  <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+
+  <br>
+  <mat-label>Url of avatar image</mat-label>
+  <input matInput formControlName="avatar" placeholder="put url to nice image here"/>
+
+  <br>
+  <mat-label>Validated user?</mat-label>
+  <mat-checkbox formControlName="isValidated" color="primary"></mat-checkbox>
+
+  <br>
+  <button mat-flat-button id="submit-button" color="primary" [disabled]="!addPersonForm.valid">Send</button>
+</form>
+<h3 id="submitted-message" *ngIf="submitted">Form submitted successfully.</h3>
+<hr>

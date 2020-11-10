@@ -11,6 +11,7 @@ import createSpyObj = jasmine.createSpyObj;
 describe('PersonService', () => {
   let service: PersonService;
   let loggingService: LoggingService;
+  const loggingServiceSpy = createSpyObj('LoggingService', ['logError', 'logMessage']);
   let httpMock: HttpTestingController; // This will be our variable to manipulate http calls.
 
   // The variables below are mockingVariables that you can use.
@@ -47,7 +48,11 @@ describe('PersonService', () => {
     Only use this import if the file you're testing really uses the HttpClient.
     IMPORTANT: If you're testing a component, you should always mock the service, not the HttpClient!
     */
-    imports: [HttpClientTestingModule], // TODO: Try to remove this import to see what error you get.
+    imports: [HttpClientTestingModule],
+    providers: [{
+      provide: LoggingService,
+      useValue: loggingServiceSpy
+    }]
   }));
 
   beforeEach(() => {
@@ -88,12 +93,10 @@ describe('PersonService', () => {
 
   it('should log and throw an error if the second attempt also fails', () => {
     // TODO: Write a test that makes sure an error is logged and thrown after a second attempt fails.
-
-    const spy = spyOn(loggingService, 'logError');
+    loggingServiceSpy.logError.and.returnValue();
     service.getPersons().subscribe((persons) => {
-    }, (err) => {
-      console.log(err); //?
-      // DIT NOG FIXEN
+    }, () => {
+      expect(loggingServiceSpy.logError).toHaveBeenCalled();
     });
     let request = httpMock.expectOne(service.apiUrl + 'persons');
     request.flush(errorCode, mockErrorResponse);
@@ -112,5 +115,11 @@ describe('PersonService', () => {
     });
     const request = httpMock.expectOne(service.apiUrl + 'persons');
     request.flush([validatedMockPerson, unvalidatedMockPerson]);
+  });
+
+  it('should do a delete call', () => {
+    // TODO: Write a tests which verifies that the correct url is called with the deletePerson method.
+    service.deletePerson(1).subscribe();
+    httpMock.expectOne(service.apiUrl + 'persons/1');
   });
 });

@@ -5,11 +5,18 @@ import {Injectable} from '@angular/core';
 })
 export class LoggingService {
 
+  /*
+  This could be some fancy logging service which talks to 3rd party software like Sentry or google analytics.
+  Instead, it just console.logs the messages for now.
+   */
   constructor() {
   }
 
-  // This method could do something fancy such as logging it in 3rd party software. For now, it just console logs it.
   public logError(error: string): void {
     console.error(error);
+  }
+
+  public logMessage(message: string): void {
+    console.log(message);
   }
 }

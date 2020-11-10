@@ -1,0 +1,19 @@
+<h2>Person Table Component</h2>
+<button mat-flat-button color="primary" (click)="getPersons()">Get all persons</button><br>
+<button mat-flat-button color="primary" (click)="getValidatedPersons()">Get all validated persons</button>
+<hr>
+<div class="container">
+  <mat-card *ngFor="let person of persons | async; index as i">
+    <mat-card-title>{{person.name}}</mat-card-title>
+    <mat-card-subtitle>Date of birth: {{person.dateOfBirth | date}}</mat-card-subtitle>
+    <mat-card-content>
+      Validated Account: <mat-icon [color]="person.isValidated ? 'accent' : 'warn'">{{person.isValidated ? 'check_circle' : 'warning'}}</mat-icon>
+    </mat-card-content>
+    <img mat-card-image [src]="person.avatar"/>
+    <mat-card-actions>
+      <button mat-fab color="primary" (click)="deleteFromList(person.id)"><mat-icon>delete</mat-icon></button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+

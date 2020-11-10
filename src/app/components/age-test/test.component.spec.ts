@@ -99,7 +99,7 @@ describe('TestComponent', () => {
     });
 
     it('should display the "odd-year" class when the year is odd', () => {
-      // TODO components if the paragraph has the correct class when the year is odd.
+      // TODO test if the paragraph has the correct class when the year is odd.
       component.yearOfBirth = 1;
       fixture.detectChanges();
       const paragraph = fixture.debugElement.query(By.css('#year-of-birth'));

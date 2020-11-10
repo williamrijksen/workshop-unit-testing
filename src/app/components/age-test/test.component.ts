@@ -9,7 +9,7 @@ import {FormService} from '../../services/form/form.service';
 })
 export class TestComponent implements OnInit {
   public testForm: FormGroup;
-  public formResult = {
+  public initialValues = {
     name: '',
     age: 0
   };
@@ -31,8 +31,8 @@ export class TestComponent implements OnInit {
 
   private createForm() {
     this.testForm = new FormGroup({
-      name: new FormControl(this.formResult.name, [Validators.required, Validators.minLength(2)]),
-      age: new FormControl(this.formResult.age, [Validators.required, Validators.min(1)])
+      name: new FormControl(this.initialValues.name, [Validators.required, Validators.minLength(2)]),
+      age: new FormControl(this.initialValues.age, [Validators.required, Validators.min(1), Validators.max(110)])
     });
   }
 

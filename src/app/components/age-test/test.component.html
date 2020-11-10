@@ -1,17 +1,19 @@
+<h2>Age Component</h2>
 <form id="test-form" [formGroup]="testForm" (ngSubmit)="onSubmit()">
   <label>
-    <label>Naam</label>
-    <input type="text" formControlName="name" placeholder="Naam">
+    <mat-label>Name</mat-label>
+    <input matInput type="text" formControlName="name" placeholder="Naam">
   </label>
   <label>
-    <label>Leeftijd</label>
-    <input type="number" formControlName="age" placeholder="Leeftijd">
+    <label>Age</label>
+    <input matInput type="number" formControlName="age" placeholder="Leeftijd">
   </label>
 
-  <button id="submit-button" [disabled]="!testForm.valid">Send</button>
+  <button mat-flat-button id="submit-button" color="primary" [disabled]="!testForm.valid">Send</button>
 
   <p>The result will display red for odd years, green for even years</p>
   <p *ngIf="yearOfBirth" [class.even-year]="isBirthYearEven()" [class.odd-year]="!isBirthYearEven()" id="year-of-birth">
     You were born in {{yearOfBirth}}
   </p>
 </form>
+<hr>

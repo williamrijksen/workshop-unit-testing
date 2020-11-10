@@ -38,19 +38,15 @@ describe('PersonTableComponent', () => {
   });
 
   it('should call to the personService.getPersons method', () => {
-    component.getPersons();
-    expect(personService.getPersons).toHaveBeenCalled();
+    // TODO: Test that the personService.getPersons method is called when executing the component's getPersons method.
   });
 
   it('should call to the personService.getValidated persons method', () => {
-    component.getValidatedPersons();
-    expect(personService.getAllValidatedPersons).toHaveBeenCalled();
+    // TODO: Test that the personService.getValidatedPersons method is called when executing the component's getValidatedPersons method.
   });
 
   it('should call the service with the correct ID', () => {
-    personServiceSpy.deletePerson.and.returnValue(new Observable());
-    personService.deletePerson(1);
-    component.deleteFromList(1);
-    expect(personService.deletePerson).toHaveBeenCalledWith(1);
+    // TODO: Create a Mock for the personService.deletePerson by using the provided spy, and setup a return value.
+    // TODO: Test that personService.deletePerson method is called with the correct ID when executing the component's deleteFromList method.
   });
 });

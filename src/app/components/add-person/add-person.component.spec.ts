@@ -23,6 +23,7 @@ describe('AddPersonComponent', () => {
   mockPerson.name = 'Theo Test';
   mockPerson.isValidated = true;
   mockPerson.createdAt = new Date();
+
   // Spy Objects
   const personServiceSpy = createSpyObj(
     'PersonService',
@@ -64,49 +65,16 @@ describe('AddPersonComponent', () => {
 
     it('should be valid', () => {
       // Test multiple cases where the form should be valid. Think of edge cases etc.
-      component.addPersonForm.controls.name.setValue('Milan');
-      component.addPersonForm.controls.dateOfBirth.setValue(new Date(1994, 4, 24));
-      component.addPersonForm.controls.isValidated.setValue(true);
-      component.addPersonForm.controls.avatar.setValue('https://imageskincare.nl/media/home/stores/1/IMAGE-Collection.jpg');
-      expect(component.addPersonForm.valid).toBeTruthy();
     });
 
-    // TODO Test multiple cases where the form should be invalid.
-    // Take a look at all Validators used in the createForm method, and make sure all those are tested here.
     it('should be invalid', () => {
-      component.addPersonForm.controls.name.setValue('Milan');
-      component.addPersonForm.controls.dateOfBirth.setValue(new Date(1894, 4, 24));
-      component.addPersonForm.controls.isValidated.setValue(true);
-      component.addPersonForm.controls.avatar.setValue('https://imageskincare.nl/media/home/stores/1/IMAGE-Collection.jpg');
-      expect(component.addPersonForm.valid).toBeFalsy();
-
-      component.addPersonForm.controls.name.setValue('');
-      component.addPersonForm.controls.dateOfBirth.setValue(new Date(1994, 4, 24));
-      component.addPersonForm.controls.isValidated.setValue(true);
-      component.addPersonForm.controls.avatar.setValue('https://imageskincare.nl/media/home/stores/1/IMAGE-Collection.jpg');
-      expect(component.addPersonForm.valid).toBeFalsy();
-
-      component.addPersonForm.controls.name.setValue('Milan');
-      component.addPersonForm.controls.dateOfBirth.setValue(new Date(1994, 4, 24));
-      component.addPersonForm.controls.isValidated.setValue(true);
-      component.addPersonForm.controls.avatar.setValue('');
-      expect(component.addPersonForm.valid).toBeFalsy();
-
-      component.addPersonForm.controls.name.setValue('thisIsAVeryLongNameThatshouldntBeValidForTheForm');
-      component.addPersonForm.controls.dateOfBirth.setValue(new Date(1994, 4, 24));
-      component.addPersonForm.controls.isValidated.setValue(true);
-      component.addPersonForm.controls.avatar.setValue('https://imageskincare.nl/media/home/stores/1/IMAGE-Collection.jpg');
-      expect(component.addPersonForm.valid).toBeFalsy();
+      // TODO Test multiple cases where the form should be invalid.
+      // Take a look at all Validators used in the createForm method, and make sure all those are tested here.
     });
   });
 
   it('should toggle visibility', () => {
     // TODO test that the form visibility will be set.
-    component.toggleFormVisibility({checked: true});
-    expect(component.formVisible).toBeTruthy();
-
-    component.toggleFormVisibility({checked: false});
-    expect(component.formVisible).toBeFalsy();
   });
 
   describe('submitting the form', () => {
@@ -114,41 +82,27 @@ describe('AddPersonComponent', () => {
     beforeEach(() => {
       // Use this beforeEach to set the form values for the tests.
       // Take a look at the 'form should be valid' tests to use that code & data :-).
-      component.addPersonForm.controls.name.setValue('Milan');
-      component.addPersonForm.controls.dateOfBirth.setValue(new Date(1994, 4, 24));
-      component.addPersonForm.controls.isValidated.setValue(true);
-      component.addPersonForm.controls.avatar.setValue('https://imageskincare.nl/media/home/stores/1/IMAGE-Collection.jpg');
+
+      /* WRITE CODE HERE */
 
       // Maybe it's a good idea to also setup our return value for our mock(s) here?
       // This can also be done after writing the test, and seeing what fails if you're unsure what to mock.
-      personServiceSpy.postPerson.and.returnValue(of(mockPerson));
+
+      /* WRITE CODE HERE */
     });
 
     it('should call the postPerson method', () => {
-      // TODO: Test that the postPerson method is called with the correct (expected) data.
-      component.onSubmit();
-      expect(personServiceSpy.postPerson).toHaveBeenCalledWith({
-        name: 'Milan',
-        dateOfBirth: new Date(1994, 4, 24),
-        isValidated: true,
-        avatar: 'https://imageskincare.nl/media/home/stores/1/IMAGE-Collection.jpg'
-      });
+      // TODO: Test that the personService.postPerson method is called with the correct (expected) data at the onSubmit method
     });
 
     it('should call the loggingService on success', () => {
-      // TODO: Test that the loggingService is called on success with the correct message
-      component.onSubmit();
-      expect(loggingServiceSpy.logMessage).toHaveBeenCalledWith('posted person with id 1');
+      // TODO: Test that the loggingService.logMessage is called on success with the correct message
     });
 
     it('should set submitted to true and show a message', () => {
       // TODO: Test that submitted state is true and a message is shown in the component.
+      // Use the age-test spec file to find an example for testing the DOM.
       // Remember: To test the DOM you need to detectChanges after changing component data.
-      component.onSubmit();
-      expect(component.submitted).toBeTruthy();
-      fixture.detectChanges();
-      const message = fixture.debugElement.query(By.css('#submitted-message'));
-      expect(message).toBeTruthy();
     });
   });
 });

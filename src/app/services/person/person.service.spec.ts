@@ -70,54 +70,24 @@ describe('PersonService', () => {
 
   it('should do a call to the correct endpoint', () => {
     // TODO: Write a test that checks that a single call is made to the persons endpoint with getPersons().
-    service.getPersons().subscribe(() => {
-    });
-
-    httpMock.expectOne(service.apiUrl + 'persons');
   });
 
   it('should retry once after a first failed attempt', () => {
     // TODO: Write a test that makes sure that after a failed http call with getPersons(), it will be retried once.
-    service.getPersons().subscribe((persons) => {
-      expect(persons).toEqual([validatedMockPerson, unvalidatedMockPerson]);
-    });
 
     // Hint: Use the expectOne method. (notice that it only expects one request, and this test needs 2)
-    let request = httpMock.expectOne(service.apiUrl + 'persons');
-    request.flush(errorCode, mockErrorResponse);
-    request = httpMock.expectOne(service.apiUrl + 'persons');
-    request.flush([validatedMockPerson, unvalidatedMockPerson]);
   });
 
   it('should log and throw an error if the second attempt also fails', () => {
     // TODO: Write a test that makes sure an error is logged and thrown after a second attempt fails.
-    loggingServiceSpy.logError.and.returnValue();
-    service.getPersons().subscribe((persons) => {
-    }, () => {
-      expect(loggingServiceSpy.logError).toHaveBeenCalled();
-    });
-    let request = httpMock.expectOne(service.apiUrl + 'persons');
-    request.flush(errorCode, mockErrorResponse);
-    request = httpMock.expectOne(service.apiUrl + 'persons');
-    request.flush(errorCode, mockErrorResponse);
-
   });
 
   it('should only return validated users', () => {
     // TODO: Write a test for the getAllValidatedPersons method. Test that it only returns validated users.
     // For this, you need to test both that: (are unvalidated persons not coming through?) and (are validated persons not left out?)
-    // If you get stuck, feel free to ask questions!
-    service.getAllValidatedPersons().subscribe((persons: Person[]) => {
-      expect(persons).toContain(validatedMockPerson);
-      expect(persons).not.toContain(unvalidatedMockPerson);
-    });
-    const request = httpMock.expectOne(service.apiUrl + 'persons');
-    request.flush([validatedMockPerson, unvalidatedMockPerson]);
   });
 
   it('should do a delete call', () => {
     // TODO: Write a tests which verifies that the correct url is called with the deletePerson method.
-    service.deletePerson(1).subscribe();
-    httpMock.expectOne(service.apiUrl + 'persons/1');
   });
 });
